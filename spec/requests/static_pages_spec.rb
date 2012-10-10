@@ -1,12 +1,16 @@
 require 'spec_helper'
 
+
+
 describe "Static pages" do
+  
+  let(:rrtsa) { "Ruby on Rails Tutorial Sample App" } 
 
   describe "Home page" do
     it "should have the title Home" do
       visit '/static_pages/home'
       page.should have_selector('title',
-                        :text => "Ruby on Rails Tutorial Sample App | Home")
+                        :text => "#{rrtsa} | Home")
     end
     
     it "should have the content 'Sample App'" do
@@ -43,5 +47,18 @@ describe "Static pages" do
     
   end
   
+  describe "Contact page" do
+     it "should have the content 'Contact'" do
+       visit '/static_pages/contact'
+       page.should have_content('Contact')
+     end
+
+     it "should have the title Contact" do
+       visit '/static_pages/contact'
+       page.should have_selector('title',
+                       :text => "Ruby on Rails Tutorial Sample App | Contact")
+     end
+
+   end
   
 end
